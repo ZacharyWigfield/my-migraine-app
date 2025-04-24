@@ -1,19 +1,19 @@
-// app/(auth)/login.tsx
+// app/(auth)/register.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "expo-router";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.replace("/"); // navigate to home or dashboard
+      await createUserWithEmailAndPassword(auth, email, password);
+      router.replace("/"); // or navigate to dashboard/home
     } catch (error: any) {
       alert(error.message);
     }
@@ -21,7 +21,7 @@ export default function Login() {
 
   return (
     <View className="flex-1 justify-center items-center px-4 bg-white">
-      <Text className="text-2xl font-bold mb-4">Login</Text>
+      <Text className="text-2xl font-bold mb-4">Register</Text>
       <TextInput
         placeholder="Email"
         className="border border-gray-300 w-full mb-2 p-2 rounded"
@@ -35,8 +35,8 @@ export default function Login() {
         onChangeText={setPassword}
         value={password}
       />
-      <Pressable className="bg-blue-500 px-4 py-2 rounded" onPress={handleLogin}>
-        <Text className="text-white text-center">Login</Text>
+      <Pressable className="bg-blue-500 px-4 py-2 rounded" onPress={handleRegister}>
+        <Text className="text-white text-center">Create Account</Text>
       </Pressable>
     </View>
   );
