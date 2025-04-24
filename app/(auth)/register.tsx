@@ -1,7 +1,7 @@
 // app/(auth)/register.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import { auth } from "../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "expo-router";
 
