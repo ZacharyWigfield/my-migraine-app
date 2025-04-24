@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -38,6 +38,11 @@ export default function Login() {
       <Pressable className="bg-blue-500 px-4 py-2 rounded" onPress={handleLogin}>
         <Text className="text-white text-center">Login</Text>
       </Pressable>
-    </View>
+      <Link href="/register" asChild>
+        <Pressable className="bg-blue-500 px-4 py-2 rounded">
+          <Text className="text-white text-center">Register</Text>
+        </Pressable>
+      </Link>
+    </View >
   );
 }
