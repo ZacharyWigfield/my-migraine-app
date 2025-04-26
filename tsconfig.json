@@ -3,10 +3,10 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-
+    "types": ["jest", "node"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
     }
   }
 }
