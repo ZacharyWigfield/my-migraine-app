@@ -21,7 +21,6 @@ export default function Login() {
 
   return (
     <View className="flex-1 justify-center items-center px-4 bg-white">
-      <Text className="text-2xl font-bold mb-4">Login</Text>
       <TextInput
         placeholder="Email"
         className="border border-gray-300 w-full mb-2 p-2 rounded"
