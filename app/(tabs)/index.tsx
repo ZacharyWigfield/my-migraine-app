@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
 import "global.css"
+import CalendarView from "components/CalendarView";
 
 // landing page once a user is authenticated. Default landing page if a user is already signed in
 
@@ -13,6 +14,7 @@ export default function HomeScreen() {
           <Text className="text-white text-lg">Log Today</Text>
         </Pressable>
       </Link>
+      <CalendarView />
     </View>
   );
 }
