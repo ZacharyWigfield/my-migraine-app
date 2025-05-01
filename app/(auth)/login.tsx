@@ -5,6 +5,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { Link, useRouter } from "expo-router";
 
+// landing page for a user who isn't signed in. Default page when a user is not authorized
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
