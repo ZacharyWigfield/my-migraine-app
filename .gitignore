@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 coverage
+my-migraine-app-firebase-adminsdk-fbsvc-28f2c6cc0f.json
 
 
 
