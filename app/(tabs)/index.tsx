@@ -1,5 +1,4 @@
 import { View, Text, Pressable } from "react-native";
-import { Link } from "expo-router";
 import "global.css"
 import CalendarView from "components/CalendarView";
 import { signOut } from "firebase/auth";

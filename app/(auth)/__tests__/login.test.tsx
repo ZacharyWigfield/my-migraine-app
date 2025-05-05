@@ -1,5 +1,5 @@
 // login.test.tsx
-import { render, } from '@testing-library/react-native';
+import { fireEvent, render, } from '@testing-library/react-native';
 import Login from '../login';
 
 describe('Login Screen', () => {
@@ -11,5 +11,17 @@ describe('Login Screen', () => {
         expect(getByText('Login')).toBeTruthy();
         expect(getByText('Register')).toBeTruthy();
     });
+
+    it('calls the registration function when the button is pressed', () => {
+            const { getByPlaceholderText, getByText } = render(<Login />);
+            const handleLogin = jest.fn();
+    
+            fireEvent.changeText(getByPlaceholderText(/email/i), 'test@example.com');
+            fireEvent.changeText(getByPlaceholderText(/password/i), 'securepassword');
+    
+            fireEvent.press(getByText(/login/i));
+            expect(handleLogin).toHaveBeenCalled();
+    
+        });
 
 });
