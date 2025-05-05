@@ -11,7 +11,9 @@
       "tsconfigPaths": true
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth" // Add other Firebase modules as needed
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
