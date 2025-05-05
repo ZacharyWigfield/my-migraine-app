@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "my-migraine-app",
+    "slug": "my-migraine-app",
     "version": "1.0.0",
     "newArchEnabled": true,
     "web": {
@@ -33,6 +33,13 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.myexpoapp"
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b6b15365-cbce-4fb9-a20d-513f7d41df33"
+      }
+    },
+    "owner": "oniman999"
   }
 }
