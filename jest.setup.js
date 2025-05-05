@@ -1,5 +1,3 @@
-import 'react-native-gesture-handler/jestSetup';
-
 // jest.setup.js
 import 'react-native-gesture-handler/jestSetup'; // Only include this if using gesture handler
 

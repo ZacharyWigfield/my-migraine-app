@@ -1,8 +1,8 @@
 import { View, Text, Pressable } from "react-native";
 import "global.css"
 import CalendarView from "components/CalendarView";
-import { signOut } from "firebase/auth";
-import { auth } from "../../lib/firebase";
+import auth from '@react-native-firebase/auth';
+
 
 // landing page once a user is authenticated. Default landing page if a user is already signed in
 
@@ -21,7 +21,7 @@ export default function HomeScreen() {
 
 async function handleLogout() {
   try {
-    await signOut(auth);
+    await auth().signOut();
   } catch (error) {
     console.error("Error signing out:", error);
   }

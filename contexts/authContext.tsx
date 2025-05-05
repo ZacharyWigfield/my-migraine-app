@@ -1,20 +1,18 @@
 // lib/AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "lib/firebase";
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
-
-const AuthContext = createContext<{ user: User | null; loading: boolean }>({
+const AuthContext = createContext<{ user: FirebaseAuthTypes.User | null; loading: boolean;}>({
     user: null,
     loading: true,
-});
+  });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        const unsubscribe = auth().onAuthStateChanged((firebaseUser: FirebaseAuthTypes.User | null) => {
             setUser(firebaseUser);
             setLoading(false);
         });

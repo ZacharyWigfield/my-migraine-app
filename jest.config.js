@@ -1,17 +1,8 @@
-const { getDefaultConfig } = require('@expo/metro-config');
-const defaultConfig = getDefaultConfig(__dirname);
-
 module.exports = {
-    preset: 'react-native',
-    transformIgnorePatterns: [
-      'node_modules/(?!(@react-native|react-native|react-native-gesture-handler|react-native-reanimated|@react-navigation))',
-    ],
-    setupFiles: ['./jest.setup.js'],
-    testEnvironment: 'jsdom',
-    transform: {
-      '^.+\\.(js|ts|tsx)$': 'babel-jest',
-    },
-    // moduleNameMapper: {
-    //   '^react-native$': 'react-native-web',  // For some apps, this helps resolve react-native issues
-    // },
-  };
+  preset: 'jest-expo',
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  testEnvironment: 'jsdom',
+  transformIgnorePatterns: [
+    'node_modules/(?!(expo(nent)?|@expo(nent)?|react-native|@react-native|@react-navigation|nativewind|expo-modules-core)/)',
+  ],
+};
