@@ -1,5 +1,12 @@
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import Register from '../register';
+
+//  Mock Firebase auth
+const mockCreateUserWithEmailAndPassword = jest.fn(() => Promise.resolve({ user: {} }));
+
+jest.mock('@react-native-firebase/auth', () => () => ({
+    createUserWithEmailAndPassword: mockCreateUserWithEmailAndPassword,
+}));
 
 describe('Register Screen', () => {
     it('renders all required inputs and the register button', () => {
@@ -10,15 +17,20 @@ describe('Register Screen', () => {
         expect(getByText(/create/i)).toBeTruthy();
     });
 
-    it('calls the registration function when the button is pressed', () => {
+    it('calls the registration function when the button is pressed', async () => {
         const { getByPlaceholderText, getByText } = render(<Register />);
-        const handleRegister = jest.fn();
 
         fireEvent.changeText(getByPlaceholderText(/email/i), 'test@example.com');
         fireEvent.changeText(getByPlaceholderText(/password/i), 'securepassword');
 
         fireEvent.press(getByText(/create/i));
-        expect(handleRegister).toHaveBeenCalled();
+
+        await waitFor(() => {
+            expect(mockCreateUserWithEmailAndPassword).toHaveBeenCalledWith(
+                'test@example.com',
+                'securepassword'
+            );
+        });
 
     });
 });

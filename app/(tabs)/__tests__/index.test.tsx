@@ -1,5 +1,11 @@
-import { fireEvent, render, } from '@testing-library/react-native';
+import { fireEvent, render, waitFor, } from '@testing-library/react-native';
 import HomeScreen from '..';
+
+const mockSignOut = jest.fn(() => Promise.resolve({ user: {} }));
+
+jest.mock('@react-native-firebase/auth', () => () => ({
+    signOut: mockSignOut,
+}));
 
 describe('Login Screen', () => {
     it('renders the logout button correctly', () => {
@@ -8,12 +14,13 @@ describe('Login Screen', () => {
         expect(getByText('Logout')).toBeTruthy();
     });
 
-    it('calls the logout function when the logout button is pressed', () => {
+    it('calls the logout function when the logout button is pressed', async () => {
         const { getByText } = render(<HomeScreen />);
-        const handleLogout = jest.fn();
 
-        fireEvent.press(getByText(/register/i));
-        expect(handleLogout).toHaveBeenCalled();
+        fireEvent.press(getByText(/logout/i));
+        await waitFor(() => {
+            expect(mockSignOut).toHaveBeenCalled();
+        });
     })
 
 });

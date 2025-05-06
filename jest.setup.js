@@ -3,11 +3,15 @@ import 'react-native-gesture-handler/jestSetup'; // Only include this if using g
 
 // Mock simple navigation hooks temporarily
 jest.mock('expo-router', () => ({
-  Link: ({ children }) => <>{children}</>, 
-  useRouter: jest.fn(() => ({
-    replace: jest.fn(),  
-    push: jest.fn(),     
-  })),
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+  }),
+  router: {
+    push: jest.fn(),
+    replace: jest.fn(),
+  },
+  Link: ({ children }) => children,
 }));
 
 jest.mock('firebase/auth', () => ({
