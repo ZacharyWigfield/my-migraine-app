@@ -1,11 +1,8 @@
 import { View, Text, Pressable } from "react-native";
-import "global.css"
 import CalendarView from "components/CalendarView";
 import auth from '@react-native-firebase/auth';
 
-
 // landing page once a user is authenticated. Default landing page if a user is already signed in
-
 export default function HomeScreen() {
   return (
     <View className="flex-1 items-center justify-center bg-white">
