@@ -2,7 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
-import Checkbox from '@react-native-community/checkbox';
+import Checkbox from "expo-checkbox";
 
 export default function DateEntryForm() {
   const { date } = useLocalSearchParams();

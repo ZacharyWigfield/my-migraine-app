@@ -14,7 +14,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@react-native-community/checkbox": "^0.5.17",
     "@react-native-firebase/app": "^22.1.0",
     "@react-native-firebase/auth": "^22.1.0",
     "@react-native-firebase/firestore": "^22.1.0",
@@ -31,7 +30,12 @@
     "react-native-gesture-handler": "~2.24.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
-    "react-native-screens": "~4.10.0"
+    "react-native-screens": "~4.10.0",
+    "expo-checkbox": "~4.1.4",
+    "expo-secure-store": "~14.2.3",
+    "expo-notifications": "~0.31.1",
+    "expo-haptics": "~14.1.4",
+    "expo-location": "~18.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
