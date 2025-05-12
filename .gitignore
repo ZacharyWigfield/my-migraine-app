@@ -12,6 +12,25 @@ web-build/
 coverage
 my-migraine-app-firebase-adminsdk-fbsvc-28f2c6cc0f.json
 
+# Firebase
+/google-services.json
+android/app/google-services.json
+
+# Any Firebase admin/service account files
+*-firebase-adminsdk-*.json
+*.serviceAccountKey.json
+
+# Jest coverage and cache
+coverage/
+jest-cache/
+jest-output.log
+
+# EAS
+.eas/
+build/
+
+# VSCode
+.vscode/
 
 
 
