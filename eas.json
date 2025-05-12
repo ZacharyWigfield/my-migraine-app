@@ -23,5 +23,10 @@
   },
   "submit": {
     "production": {}
+  },
+  "hooks": {
+    "prebuild": {
+      "android": "cp .eas/google-services.json android/app/google-services.json"
+    }
   }
 }
