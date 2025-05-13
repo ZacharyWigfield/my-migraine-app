@@ -3,6 +3,8 @@ import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from "rea
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
 import Checkbox from "expo-checkbox";
+import { MultiSelectChips } from "components/MultiSelectChips"
+import { SingleSelectChips } from "components/SingleSelectChips";
 
 export default function DateEntryForm() {
   const { date } = useLocalSearchParams();
@@ -19,11 +21,11 @@ export default function DateEntryForm() {
       date: parsedDate,
       flareup: false,
       severity: "1",
-      diet: [""],
+      diet: [],
       exerciseIntensity: "",
       exerciseHours: "",
       screentime: "",
-      weather: [""],
+      weather: [],
       stressLevel: "",
       caffeine: false,
       alcohol: false,
@@ -68,24 +70,12 @@ export default function DateEntryForm() {
           <Controller
             control={control}
             name="severity"
-            render={({ field: { onChange, value } }) => (
-              <View className="flex-row gap-2">
-                {SEVERITY_OPTIONS.map((option) => {
-                  const selected = value === option;
-                  return (
-                    <TouchableOpacity
-                      key={option}
-                      className={`px-4 py-2 rounded-full border ${selected ? "bg-red-500 text-white" : "bg-white"
-                        }`}
-                      onPress={() => onChange(option)}
-                    >
-                      <Text className={selected ? "text-white" : "text-black"}>
-                        {option}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
+            render={({ field }) => (
+              <SingleSelectChips
+                options={SEVERITY_OPTIONS}
+                value={field.value}
+                onChange={field.onChange}
+              />
             )}
           />
         </>
@@ -95,27 +85,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="diet"
-        render={({ field: { onChange, value } }) => (
-          <View className="flex-row flex-wrap gap-2">
-            {DIET_OPTIONS.map((option) => {
-              const selected = value.includes(option);
-              return (
-                <TouchableOpacity
-                  key={option}
-                  className={`px-3 py-1 rounded-full border ${selected ? "bg-blue-500 text-white" : "bg-white"
-                    }`}
-                  onPress={() => {
-                    const newValue = selected
-                      ? value.filter((v) => v !== option)
-                      : [...value, option];
-                    onChange(newValue);
-                  }}
-                >
-                  <Text>{option}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+        render={({ field }) => (
+          <MultiSelectChips
+            options={DIET_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
@@ -123,25 +98,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="exerciseIntensity"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            {INTENSITY_OPTIONS.map((option) => {
-              const selected = value === option;
-              return (
-                <TouchableOpacity
-                  key={option}
-                  className={`px-4 py-2 rounded-full border ${selected ? "bg-red-500 text-white" : "bg-white"
-                    }`}
-                  onPress={() => onChange(option)}
-                >
-                  <Text className={selected ? "text-white" : "text-black"}>
-                    {option}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={INTENSITY_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
@@ -191,27 +153,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="weather"
-        render={({ field: { onChange, value } }) => (
-          <View className="flex-row flex-wrap gap-2">
-            {WEATHER_OPTIONS.map((option) => {
-              const selected = value.includes(option);
-              return (
-                <TouchableOpacity
-                  key={option}
-                  className={`px-3 py-1 rounded-full border ${selected ? "bg-blue-500 text-white" : "bg-white"
-                    }`}
-                  onPress={() => {
-                    const newValue = selected
-                      ? value.filter((v) => v !== option)
-                      : [...value, option];
-                    onChange(newValue);
-                  }}
-                >
-                  <Text>{option}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+        render={({ field }) => (
+          <MultiSelectChips
+            options={WEATHER_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
@@ -219,24 +166,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="stressLevel"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            {STRESS_OPTIONS.map((option) => {
-              const selected = value === option;
-              return (
-                <TouchableOpacity
-                  key={option}
-                  className={`px-4 py-2 rounded-full border ${selected ? "bg-red-500 text-white" : "bg-white"
-                    }`}
-                  onPress={() => onChange(option)}
-                >
-                  <Text className={selected ? "text-white" : "text-black"}>
-                    {option}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={STRESS_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
