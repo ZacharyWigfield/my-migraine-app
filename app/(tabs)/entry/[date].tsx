@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
 import Checkbox from "expo-checkbox";
@@ -44,7 +44,7 @@ export default function DateEntryForm() {
   };
 
   return (
-    <View className="p-4 space-y-4">
+    <ScrollView className="p-4 space-y-4">
       <Text className="text-lg font-bold mb-2">Entry for {date}</Text>
 
       <Text>Flare-up:</Text>
@@ -240,6 +240,20 @@ export default function DateEntryForm() {
         )}
       />
 
+      <Text>Caffeine:</Text>
+      <Controller
+        control={control}
+        name="caffeine"
+        render={({ field: { onChange, value } }) => (
+          <View >
+            <Checkbox
+              value={value}
+              onValueChange={onChange}
+            />
+          </View>
+        )}
+      />
+
       <Text>Alcohol:</Text>
       <Controller
         control={control}
@@ -290,6 +304,6 @@ export default function DateEntryForm() {
       />
 
       <Button title="Save Entry" onPress={handleSubmit(onSubmit)} />
-    </View>
+    </ScrollView>
   );
 }

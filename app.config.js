@@ -1,0 +1,48 @@
+export default ({ config }) => ({
+  ...config,
+  name: 'my-migraine-app',
+  slug: 'my-migraine-app',
+  version: '1.0.0',
+  newArchEnabled: true,
+  web: {
+    favicon: './assets/favicon.png',
+  },
+  experiments: {
+    tsconfigPaths: true,
+  },
+  plugins: [
+    'expo-router',
+    '@react-native-firebase/app',
+    '@react-native-firebase/auth',
+    'expo-secure-store',
+  ],
+  orientation: 'portrait',
+  icon: './assets/icon.png',
+  userInterfaceStyle: 'light',
+  splash: {
+    image: './assets/splash.png',
+    resizeMode: 'contain',
+    backgroundColor: '#ffffff',
+  },
+  assetBundlePatterns: [
+    '**/*',
+  ],
+  ios: {
+    supportsTablet: true,
+  },
+  android: {
+    googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? './google-services.json',
+    package: 'com.zewigfield.migraineApp',
+    adaptiveIcon: {
+      foregroundImage: './assets/adaptive-icon.png',
+      backgroundColor: '#ffffff',
+    },
+  },
+  extra: {
+    router: {},
+    eas: {
+      projectId: 'b6b15365-cbce-4fb9-a20d-513f7d41df33',
+    },
+  },
+  owner: 'oniman999',
+});
