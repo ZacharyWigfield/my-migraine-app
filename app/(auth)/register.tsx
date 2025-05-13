@@ -1,7 +1,7 @@
 // app/(auth)/register.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import auth from '@react-native-firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from '@react-native-firebase/auth'; 
 import { useRouter } from "expo-router";
 
 export default function Register() {
@@ -11,7 +11,8 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      await auth().createUserWithEmailAndPassword(email, password);
+      const auth = getAuth();
+      await createUserWithEmailAndPassword(auth, email, password);
       router.replace("/"); // or navigate to dashboard/home
     } catch (error: any) {
       alert(error.message);

@@ -8,9 +8,9 @@ export type DateEntryFormData = {
     screentime: string;
     weather: string[];
     stressLevel: string;
-    caffeine: boolean;
-    alcohol: boolean;
-    tobacco: boolean;
+    caffeine: string;
+    alcohol: string;
+    tobacco: string;
     sleep: string;
     notes: string;
   };
@@ -25,9 +25,9 @@ export type DateEntryFormData = {
     screentime: number;
     weather: string[];
     stressLevel: string;
-    caffeine: boolean;
-    alcohol: boolean;
-    tobacco: boolean;
+    caffeine: string;
+    alcohol: string;
+    tobacco: string;
     sleep: number;
     notes: string;
   };

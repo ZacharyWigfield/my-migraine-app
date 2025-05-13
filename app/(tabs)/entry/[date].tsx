@@ -13,8 +13,12 @@ export default function DateEntryForm() {
     "skipped meal", "low calorie day", "high calorie day"];
   const WEATHER_OPTIONS: string[] = ["rainy", "sunny", "hot", "cold", "dry", "humid"]
   const SEVERITY_OPTIONS: string[] = ["1", "2", "3", "4", "5"];
-  const INTENSITY_OPTIONS: string[] = ["low", "medium", "high"];
-  const STRESS_OPTIONS: string[] = ["low", "medium", "high"]
+  const INTENSITY_OPTIONS: string[] = ["none", "low", "medium", "high"];
+  const STRESS_OPTIONS: string[] = ["none", "low", "medium", "high"];
+  const CAFFEINE_OPTIONS: string[] = ["none", "low", "medium", "high"];
+  const ALCOHOL_OPTIONS: string[] = ["none", "low", "medium", "high"];
+  const TOBACCO_OPTIONS: string[] = ["none", "low", "medium", "high"];
+
 
   const { control, handleSubmit, formState: { errors } } = useForm<DateEntryFormData>({
     defaultValues: {
@@ -22,14 +26,14 @@ export default function DateEntryForm() {
       flareup: false,
       severity: "1",
       diet: [],
-      exerciseIntensity: "",
+      exerciseIntensity: "none",
       exerciseHours: "",
       screentime: "",
       weather: [],
-      stressLevel: "",
-      caffeine: false,
-      alcohol: false,
-      tobacco: false,
+      stressLevel: "none",
+      caffeine: "none",
+      alcohol: "none",
+      tobacco: "none",
       sleep: "",
       notes: "",
     },
@@ -179,13 +183,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="caffeine"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            <Checkbox
-              value={value}
-              onValueChange={onChange}
-            />
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={CAFFEINE_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
@@ -193,13 +196,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="alcohol"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            <Checkbox
-              value={value}
-              onValueChange={onChange}
-            />
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={ALCOHOL_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
@@ -207,13 +209,12 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="tobacco"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            <Checkbox
-              value={value}
-              onValueChange={onChange}
-            />
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={TOBACCO_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
 
