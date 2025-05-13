@@ -3,6 +3,7 @@ export default ({ config }) => ({
   name: 'my-migraine-app',
   slug: 'my-migraine-app',
   version: '1.0.0',
+  scheme: 'mymigraineapp',
   newArchEnabled: true,
   web: {
     favicon: './assets/favicon.png',
