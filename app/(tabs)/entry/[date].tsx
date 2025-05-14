@@ -31,7 +31,7 @@ export default function DateEntryForm() {
       exerciseIntensity: "none",
       exerciseHours: 0,
       screentime: 0,
-      sleep: 0,
+      sleep: 8,
       weather: [],
       stressLevel: "none",
       caffeine: "none",
@@ -242,7 +242,10 @@ export default function DateEntryForm() {
         )}
       />
 
-      <Button title="Save Entry" onPress={handleSubmit(onSubmit)} />
+      <View className="m-8">
+        <Button title="Save Entry" onPress={handleSubmit(onSubmit)} />
+      </View>
+
     </ScrollView>
   );
 }
