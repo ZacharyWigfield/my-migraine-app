@@ -67,23 +67,21 @@ export default function DateEntryForm() {
         )}
       />
 
-      {/* conditionally render severity only if flareup is checked */}
-      {flareup && (
-        <>
-          <Text>Severity:</Text>
-          <Controller
-            control={control}
-            name="severity"
-            render={({ field }) => (
-              <SingleSelectChips
-                options={SEVERITY_OPTIONS}
-                value={field.value}
-                onChange={field.onChange}
-              />
-            )}
+
+      <Text>Severity:</Text>
+      <Controller
+        control={control}
+        name="severity"
+        render={({ field }) => (
+          <SingleSelectChips
+            disabled={!flareup}
+            options={SEVERITY_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
           />
-        </>
-      )}
+        )}
+      />
+
 
       <Text>Diet:</Text>
       <Controller
