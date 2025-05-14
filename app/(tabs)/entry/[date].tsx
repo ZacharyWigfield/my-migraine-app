@@ -1,10 +1,11 @@
 import { useLocalSearchParams } from "expo-router";
-import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, ScrollView, Text, TextInput, View } from "react-native";
+import Slider from '@react-native-community/slider';
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
-import Checkbox from "expo-checkbox";
 import { MultiSelectChips } from "components/MultiSelectChips"
 import { SingleSelectChips } from "components/SingleSelectChips";
+import { useEffect } from "react";
 
 export default function DateEntryForm() {
   const { date } = useLocalSearchParams();
@@ -13,6 +14,7 @@ export default function DateEntryForm() {
     "skipped meal", "low calorie day", "high calorie day"];
   const WEATHER_OPTIONS: string[] = ["rainy", "sunny", "hot", "cold", "dry", "humid"]
   const SEVERITY_OPTIONS: string[] = ["1", "2", "3", "4", "5"];
+  const FLAREUP_OPTIONS: string[] = ["no", "yes"]
   const INTENSITY_OPTIONS: string[] = ["none", "low", "medium", "high"];
   const STRESS_OPTIONS: string[] = ["none", "low", "medium", "high"];
   const CAFFEINE_OPTIONS: string[] = ["none", "low", "medium", "high"];
@@ -20,29 +22,35 @@ export default function DateEntryForm() {
   const TOBACCO_OPTIONS: string[] = ["none", "low", "medium", "high"];
 
 
-  const { control, handleSubmit, formState: { errors } } = useForm<DateEntryFormData>({
+  const { control, setValue, handleSubmit, formState: { errors } } = useForm<DateEntryFormData>({
     defaultValues: {
       date: parsedDate,
-      flareup: false,
-      severity: "1",
+      flareup: "no",
+      severity: "",
       diet: [],
       exerciseIntensity: "none",
-      exerciseHours: "",
-      screentime: "",
+      exerciseHours: 0,
+      screentime: 0,
+      sleep: 0,
       weather: [],
       stressLevel: "none",
       caffeine: "none",
       alcohol: "none",
       tobacco: "none",
-      sleep: "",
       notes: "",
     },
   });
 
-  const flareup = useWatch({
-    control,
-    name: "flareup",
-  });
+  const flareup = useWatch({ control, name: "flareup" });
+  const exerciseHours = useWatch({ control, name: "exerciseHours" });
+  const screenTime = useWatch({ control, name: "screentime" });
+  const sleep = useWatch({ control, name: "sleep" });
+
+  useEffect(() => {
+    if (flareup === "no") {
+      setValue("severity", "");
+    }
+  }, [flareup, setValue]);
 
   const onSubmit = (data: DateEntryFormData) => {
     console.log("Form submitted:", data);
@@ -57,16 +65,14 @@ export default function DateEntryForm() {
       <Controller
         control={control}
         name="flareup"
-        render={({ field: { onChange, value } }) => (
-          <View>
-            <Checkbox
-              value={value}
-              onValueChange={onChange}
-            />
-          </View>
+        render={({ field }) => (
+          <SingleSelectChips
+            options={FLAREUP_OPTIONS}
+            value={field.value}
+            onChange={field.onChange}
+          />
         )}
       />
-
 
       <Text>Severity:</Text>
       <Controller
@@ -74,14 +80,13 @@ export default function DateEntryForm() {
         name="severity"
         render={({ field }) => (
           <SingleSelectChips
-            disabled={!flareup}
+            disabled={flareup === "no"}
             options={SEVERITY_OPTIONS}
             value={field.value}
             onChange={field.onChange}
           />
         )}
       />
-
 
       <Text>Diet:</Text>
       <Controller
@@ -109,43 +114,64 @@ export default function DateEntryForm() {
         )}
       />
 
-      <Text>Exercise Hours:</Text>
+      <Text>Exercise Hours: {exerciseHours ?? 0}</Text>
       <Controller
         control={control}
         name="exerciseHours"
         render={({ field: { onChange, value } }) => (
           <View >
-            <TextInput
+            <Slider
               value={value}
-              onChangeText={(text) => {
-                // Allow only a single digit 1-9
-                if (/^[1-9]$/.test(text) || text === '') {
-                  onChange(text);
-                }
-              }}
-              keyboardType="number-pad"
-              maxLength={1}
+              onValueChange={onChange}
+              style={{ width: 300, height: 60 }}
+              minimumValue={0}
+              maximumValue={12}
+              step={1}
+              minimumTrackTintColor="#34D399"
+              maximumTrackTintColor="#D1D5DB"
+              thumbTintColor="#10B981"
             />
           </View>
         )}
       />
 
-      <Text>Screen Time:</Text>
+      <Text>Screen Time: {screenTime ?? 0}</Text>
       <Controller
         control={control}
         name="screentime"
         render={({ field: { onChange, value } }) => (
           <View >
-            <TextInput
+            <Slider
               value={value}
-              onChangeText={(text) => {
-                // Allow only a single digit 1-9
-                if (/^[1-9]$/.test(text) || text === '') {
-                  onChange(text);
-                }
-              }}
-              keyboardType="number-pad"
-              maxLength={1}
+              onValueChange={onChange}
+              style={{ width: 300, height: 60 }}
+              minimumValue={0}
+              maximumValue={12}
+              step={1}
+              minimumTrackTintColor="#34D399"
+              maximumTrackTintColor="#D1D5DB"
+              thumbTintColor="#10B981"
+            />
+          </View>
+        )}
+      />
+
+      <Text>Sleep: {sleep ?? 0}</Text>
+      <Controller
+        control={control}
+        name="sleep"
+        render={({ field: { onChange, value } }) => (
+          <View >
+            <Slider
+              value={value}
+              onValueChange={onChange}
+              style={{ width: 300, height: 60 }}
+              minimumValue={0}
+              maximumValue={12}
+              step={1}
+              minimumTrackTintColor="#34D399"
+              maximumTrackTintColor="#D1D5DB"
+              thumbTintColor="#10B981"
             />
           </View>
         )}
@@ -213,27 +239,6 @@ export default function DateEntryForm() {
             value={field.value}
             onChange={field.onChange}
           />
-        )}
-      />
-
-      <Text>Sleep:</Text>
-      <Controller
-        control={control}
-        name="sleep"
-        render={({ field: { onChange, value } }) => (
-          <View >
-            <TextInput
-              value={value}
-              onChangeText={(text) => {
-                // Allow only a single digit 1-9
-                if (/^[1-9]$/.test(text) || text === '') {
-                  onChange(text);
-                }
-              }}
-              keyboardType="number-pad"
-              maxLength={1}
-            />
-          </View>
         )}
       />
 

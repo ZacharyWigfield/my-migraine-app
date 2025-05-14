@@ -1,43 +1,40 @@
 export type DateEntryFormData = {
-    date: Date;
-    flareup: boolean;
-    severity: string;
-    diet: string[];
-    exerciseIntensity: string;
-    exerciseHours: string;
-    screentime: string;
-    weather: string[];
-    stressLevel: string;
-    caffeine: string;
-    alcohol: string;
-    tobacco: string;
-    sleep: string;
-    notes: string;
-  };
+  date: Date;
+  flareup: string;
+  severity: string;
+  diet: string[];
+  exerciseIntensity: string;
+  exerciseHours: number;
+  screentime: number;
+  sleep: number;
+  weather: string[];
+  stressLevel: string;
+  caffeine: string;
+  alcohol: string;
+  tobacco: string;
+  notes: string;
+};
 
-  export type NormalizedDateEntry = {
-    date: Date;
-    flareup: boolean;
-    severity: number;
-    diet: string[];
-    exerciseIntensity: string;
-    exerciseHours: number;
-    screentime: number;
-    weather: string[];
-    stressLevel: string;
-    caffeine: string;
-    alcohol: string;
-    tobacco: string;
-    sleep: number;
-    notes: string;
-  };
+export type NormalizedDateEntry = {
+  date: Date;
+  flareup: string;
+  severity: number;
+  diet: string[];
+  exerciseIntensity: string;
+  exerciseHours: number;
+  screentime: number;
+  sleep: number;
+  weather: string[];
+  stressLevel: string;
+  caffeine: string;
+  alcohol: string;
+  tobacco: string;
+  notes: string;
+};
 
-  function normalizeFormData(data: DateEntryFormData): NormalizedDateEntry {
-    return {
-      ...data,
-      severity: parseInt(data.severity, 10),
-      exerciseHours: parseInt(data.exerciseHours, 10),
-      screentime: parseInt(data.screentime, 10),
-      sleep: parseInt(data.sleep, 10),
-    };
-  }
+function normalizeFormData(data: DateEntryFormData): NormalizedDateEntry {
+  return {
+    ...data,
+    severity: parseInt(data.severity, 10),
+  };
+}
