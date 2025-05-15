@@ -15,7 +15,7 @@ export function useDateEntry(date: string) {
 
     const fetch = async () => {
       try {
-        const ref = doc(getFirestore(), "entries", `${user.uid}_${date}`);
+        const ref = doc(getFirestore(), "dateEntries", `${user.uid}_${date}`);
         const snapshot = await getDoc(ref);
         if (snapshot.exists()) {
           setData(snapshot.data() as DateEntryFormData);

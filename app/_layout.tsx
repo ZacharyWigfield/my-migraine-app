@@ -2,6 +2,7 @@ import "global.css"
 import { AuthProvider, useAuth } from "contexts/authContext";
 import { Slot, useRouter } from "expo-router";
 import { useEffect } from "react";
+import Loading from "components/Loading";
 
 //rendered before any route. Initialization code goes here
 function RootLayoutNav() {
@@ -18,6 +19,10 @@ function RootLayoutNav() {
       }
     }
   }, [user, loading]);
+
+  if(loading){
+    return <Loading></Loading>
+  }
 
   return null; // hit when loading is true, may add loading screen later
 }

@@ -5,7 +5,7 @@ import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
 import { Alert } from "react-native";
 import { useAuth } from "contexts/authContext";
 import { useDateEntry } from "hooks/useDateEntry";
-
+import Loading from "components/Loading";
 
 export default function DateEntry() {
   const { date } = useLocalSearchParams();
@@ -42,9 +42,13 @@ export default function DateEntry() {
 
     const docId = `${user.uid}_${data.date.toISOString().split('T')[0]}`;
     const db = getFirestore();
-    const ref = doc(db, 'entries', docId);
+    const ref = doc(db, 'dateEntries', docId);
     await setDoc(ref, data);
   };
+
+  if (loading) return (
+    <Loading></Loading>
+  )
 
   return (
     <DateEntryForm
