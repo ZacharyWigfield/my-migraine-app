@@ -1,8 +1,9 @@
 // app/(auth)/login.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from '@react-native-firebase/auth';
+import { signInWithEmailAndPassword } from '@react-native-firebase/auth';
 import { Link, useRouter } from "expo-router";
+import { useAuth } from "contexts/authContext";
 
 // landing page for a user who isn't signed in. Default page when a user is not authorized
 
@@ -10,10 +11,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { auth } = useAuth();
 
   const handleLogin = async () => {
     try {
-      const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
       router.replace("/"); // navigate to home or dashboard
     } catch (error: any) {

@@ -1,13 +1,14 @@
 import DateEntryForm from "components/DateEntryForm";
 import { useLocalSearchParams } from "expo-router";
 import { DateEntryFormData } from "types/dateEntryFormData";
-import { getAuth } from '@react-native-firebase/auth';
 import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
 import { Alert } from "react-native";
+import { useAuth } from "contexts/authContext";
 
 
 export default function DateEntry() {
   const { date } = useLocalSearchParams();
+  const { user } = useAuth(); 
   const initialData: Partial<DateEntryFormData> = {
     flareup: "no",
     severity: "",
@@ -35,8 +36,6 @@ export default function DateEntry() {
   };
 
   const saveEntry = async (data: DateEntryFormData) => {
-    const auth = getAuth();
-    const user = auth.currentUser;
     if (!user) throw new Error("User not authenticated");
 
     const docId = `${user.uid}_${data.date.toISOString().split('T')[0]}`;
