@@ -4,12 +4,14 @@ import { DateEntryFormData } from "types/dateEntryFormData";
 import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
 import { Alert } from "react-native";
 import { useAuth } from "contexts/authContext";
+import { useDateEntry } from "hooks/useDateEntry";
 
 
 export default function DateEntry() {
   const { date } = useLocalSearchParams();
-  const { user } = useAuth(); 
-  const initialData: Partial<DateEntryFormData> = {
+  const { user } = useAuth();
+  const { data: initialValues, loading, error } = useDateEntry(date as string);
+  const defaultData: Partial<DateEntryFormData> = {
     flareup: "no",
     severity: "",
     diet: [],
@@ -47,7 +49,7 @@ export default function DateEntry() {
   return (
     <DateEntryForm
       date={date as string}
-      initialValues={initialData}
+      initialValues={initialValues ? initialValues : defaultData}
       onSubmit={onSubmit}
     />
   );
