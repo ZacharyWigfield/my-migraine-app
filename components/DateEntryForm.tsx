@@ -27,7 +27,6 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
 
     const { control, setValue, handleSubmit, formState: { errors } } = useForm<DateEntryFormData>({
         defaultValues: {
-            date: new Date(date),
             ...initialValues
         },
     });

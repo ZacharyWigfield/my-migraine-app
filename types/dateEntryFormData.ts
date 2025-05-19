@@ -1,5 +1,4 @@
 export type DateEntryFormData = {
-  date: Date;
   flareup: string;
   severity: string;
   diet: string[];
@@ -16,7 +15,6 @@ export type DateEntryFormData = {
 };
 
 export type NormalizedDateEntry = {
-  date: Date;
   flareup: string;
   severity: number;
   diet: string[];

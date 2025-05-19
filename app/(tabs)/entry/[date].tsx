@@ -11,7 +11,7 @@ export default function DateEntry() {
   const { date } = useLocalSearchParams();
   const { user } = useAuth();
   const { data: initialValues, loading, error } = useDateEntry(date as string);
-  const defaultData: Partial<DateEntryFormData> = {
+  const defaultData: DateEntryFormData = {
     flareup: "no",
     severity: "",
     diet: [],
@@ -40,7 +40,7 @@ export default function DateEntry() {
   const saveEntry = async (data: DateEntryFormData) => {
     if (!user) throw new Error("User not authenticated");
 
-    const docId = `${user.uid}_${data.date.toISOString().split('T')[0]}`;
+    const docId = `${user.uid}_${date.toString().split('T')[0]}`;
     const db = getFirestore();
     const ref = doc(db, 'dateEntries', docId);
     await setDoc(ref, data);
