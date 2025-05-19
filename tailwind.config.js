@@ -25,6 +25,35 @@ module.exports = {
           surface: "#ecedd3",
           text: "#111827",
         },
+      },
+       fontFamily: {
+        // Custom fonts to use app-wide
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        logo: ['Poppins', 'sans-serif'], 
+      },
+      fontSize: {
+        xs: '0.75rem',    // 12px
+        sm: '0.875rem',   // 14px
+        base: '1rem',     // 16px
+        lg: '1.125rem',   // 18px
+        xl: '1.25rem',    // 20px
+        '2xl': '1.5rem',  // 24px
+      },
+      borderRadius: {
+        sm: '6px',
+        DEFAULT: '12px',
+        lg: '16px',
+        full: '9999px',
+      },
+      boxShadow: {
+        subtle: '0 1px 3px rgba(0,0,0,0.1)',
+        card: '0 4px 6px rgba(0,0,0,0.1)',
+        strong: '0 8px 10px rgba(0,0,0,0.15)',
+      },
+      spacing: {
+        // Custom spacing values (padding/margin)
+        18: '4.5rem',
+        22: '5.5rem',
       }
     },
   },
