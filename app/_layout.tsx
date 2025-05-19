@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from "contexts/authContext";
 import { Slot, useRouter } from "expo-router";
 import { useEffect } from "react";
 import Loading from "components/Loading";
+import { ThemeProvider } from "contexts/themeContext";
 
 //rendered before any route. Initialization code goes here
 function RootLayoutNav() {
@@ -20,7 +21,7 @@ function RootLayoutNav() {
     }
   }, [user, loading]);
 
-  if(loading){
+  if (loading) {
     return <Loading></Loading>
   }
 
@@ -32,8 +33,10 @@ function RootLayoutNav() {
 export default function RootLayout() {
   return (
     <AuthProvider>
-      <RootLayoutNav />
-      <Slot />
+      <ThemeProvider>
+        <RootLayoutNav />
+        <Slot />
+      </ThemeProvider>
     </AuthProvider>
   );
 }
