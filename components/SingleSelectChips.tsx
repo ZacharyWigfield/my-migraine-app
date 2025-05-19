@@ -19,11 +19,11 @@ export function SingleSelectChips({ options, value, onChange, disabled = false }
                         onPress={() => !disabled && onChange(option)}
                         className={`
           px-4 py-2 rounded-full border
-          ${selected ? "bg-red-500" : "bg-white dark:bg-migraineSafe-surface"}
+          ${selected ? "bg-accent" : "bg-mainGray"}
           ${disabled ? "opacity-50" : ""}
         `}
                     >
-                        <Text className={selected ? "text-white" : "text-black dark:text-migraineSafe-text"}>
+                        <Text className={`lightText`}>
                             {option}
                         </Text>
                     </TouchableOpacity>
