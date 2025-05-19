@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     './components/**/*.{js,ts,jsx,tsx}',
@@ -14,22 +15,20 @@ module.exports = {
         accent: "#A5D6A7",
         accent2: "#2d6a4f",
 
-        // Theme-specific groups
-        migraineSafe: {
-          bg: "#121212",
-          surface: "#1E1E1E",
-          text: "#E0E0E0",
-        },
-        light: {
-          bg: "#ffffff",
-          surface: "#ecedd3",
-          text: "#111827",
-        },
+        // Dark mode colors (migraineSafe)
+        migraineSafeBg: "#121212",
+        migraineSafeSurface: "#1E1E1E",
+        migraineSafeText: "#E0E0E0",
+
+        // Light mode colors
+        lightBg: "#ffffff",
+        lightSurface: "#ecedd3",
+        lightText: "#111827",
       },
-       fontFamily: {
+      fontFamily: {
         // Custom fonts to use app-wide
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        logo: ['Poppins', 'sans-serif'], 
+        logo: ['Poppins', 'sans-serif'],
       },
       fontSize: {
         xs: '0.75rem',    // 12px

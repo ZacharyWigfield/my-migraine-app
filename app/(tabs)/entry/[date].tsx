@@ -2,7 +2,7 @@ import DateEntryForm from "components/DateEntryForm";
 import { useLocalSearchParams } from "expo-router";
 import { DateEntryFormData } from "types/dateEntryFormData";
 import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
-import { Alert } from "react-native";
+import { Alert, View } from "react-native";
 import { useAuth } from "contexts/authContext";
 import { useDateEntry } from "hooks/useDateEntry";
 import Loading from "components/Loading";
@@ -51,10 +51,12 @@ export default function DateEntry() {
   )
 
   return (
-    <DateEntryForm
-      date={date as string}
-      initialValues={initialValues ? initialValues : defaultData}
-      onSubmit={onSubmit}
-    />
+    <View>
+      <DateEntryForm
+        date={date as string}
+        initialValues={initialValues ? initialValues : defaultData}
+        onSubmit={onSubmit}
+      />
+    </View>
   );
 }

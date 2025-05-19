@@ -1,4 +1,4 @@
-import { Button, ScrollView, Text, View } from "react-native";
+import { Button, Pressable, ScrollView, Text, View } from "react-native";
 import Slider from '@react-native-community/slider';
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
@@ -7,9 +7,9 @@ import { SingleSelectChips } from "components/SingleSelectChips";
 import { useEffect } from "react";
 
 export type DateEntryFormProps = {
-  date: string;
-  initialValues?: Partial<DateEntryFormData>;
-  onSubmit: (data: DateEntryFormData) => void;
+    date: string;
+    initialValues?: Partial<DateEntryFormData>;
+    onSubmit: (data: DateEntryFormData) => void;
 };
 
 export default function DateEntryForm({ date, initialValues, onSubmit }: DateEntryFormProps) {
@@ -44,10 +44,12 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
     }, [flareup, setValue]);
 
     return (
-        <ScrollView className="p-4 space-y-4">
-            <Text className="text-lg font-bold mb-2">Entry for {date}</Text>
+        <ScrollView className="p-4 space-y-4 bg-white dark:bg-migraineSafe-bg">
+            <Text className="text-lg font-bold mb-2 text-black dark:text-migraineSafe-text">
+                Entry for {date}
+            </Text>
 
-            <Text>Flare-up:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Flare-up:</Text>
             <Controller
                 control={control}
                 name="flareup"
@@ -60,7 +62,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Severity:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Severity:</Text>
             <Controller
                 control={control}
                 name="severity"
@@ -74,7 +76,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Diet:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Diet:</Text>
             <Controller
                 control={control}
                 name="diet"
@@ -87,7 +89,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Exercise Intensity:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Exercise Intensity:</Text>
             <Controller
                 control={control}
                 name="exerciseIntensity"
@@ -100,12 +102,12 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Exercise Hours: {exerciseHours ?? 0}</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Exercise Hours: {exerciseHours ?? 0}</Text>
             <Controller
                 control={control}
                 name="exerciseHours"
                 render={({ field: { onChange, value } }) => (
-                    <View >
+                    <View>
                         <Slider
                             value={value}
                             onValueChange={onChange}
@@ -121,12 +123,12 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Screen Time: {screenTime ?? 0}</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Screen Time: {screenTime ?? 0}</Text>
             <Controller
                 control={control}
                 name="screentime"
                 render={({ field: { onChange, value } }) => (
-                    <View >
+                    <View>
                         <Slider
                             value={value}
                             onValueChange={onChange}
@@ -142,12 +144,12 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Sleep: {sleep ?? 0}</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Sleep: {sleep ?? 0}</Text>
             <Controller
                 control={control}
                 name="sleep"
                 render={({ field: { onChange, value } }) => (
-                    <View >
+                    <View>
                         <Slider
                             value={value}
                             onValueChange={onChange}
@@ -163,7 +165,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Weather:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Weather:</Text>
             <Controller
                 control={control}
                 name="weather"
@@ -176,7 +178,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Stress Level:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Stress Level:</Text>
             <Controller
                 control={control}
                 name="stressLevel"
@@ -189,7 +191,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Caffeine:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Caffeine:</Text>
             <Controller
                 control={control}
                 name="caffeine"
@@ -202,7 +204,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Alcohol:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Alcohol:</Text>
             <Controller
                 control={control}
                 name="alcohol"
@@ -215,7 +217,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text>Tobacco:</Text>
+            <Text className="text-black dark:text-migraineSafe-text">Tobacco:</Text>
             <Controller
                 control={control}
                 name="tobacco"
@@ -228,10 +230,14 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <View className="m-8">
-                <Button title="Save Entry" onPress={handleSubmit(onSubmit)} />
+            <View className="m-8 ">
+                <Pressable
+                    className="bg-mainGreen px-4 py-2 rounded mb-4 w-full"
+                    onPress={handleSubmit(onSubmit)}
+                >
+                    <Text className="text-white text-center font-sans">Save Emtry</Text>
+                </Pressable>
             </View>
-
         </ScrollView>
     );
 }

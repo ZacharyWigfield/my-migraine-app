@@ -14,7 +14,10 @@ export function MultiSelectChips({ options, value, onChange }: MultiSelectChipsP
         return (
           <TouchableOpacity
             key={option}
-            className={`px-3 py-1 rounded-full border ${selected ? "bg-blue-500 text-white" : "bg-white"}`}
+            className={`
+          px-3 py-1 rounded-full border
+          ${selected ? "bg-blue-500" : "bg-white dark:bg-migraineSafe-surface"}
+        `}
             onPress={() => {
               const newValue = selected
                 ? value.filter((v) => v !== option)
@@ -22,7 +25,9 @@ export function MultiSelectChips({ options, value, onChange }: MultiSelectChipsP
               onChange(newValue);
             }}
           >
-            <Text>{option}</Text>
+            <Text className={`${selected ? "text-white" : "text-black dark:text-migraineSafe-text"}`}>
+              {option}
+            </Text>
           </TouchableOpacity>
         );
       })}
