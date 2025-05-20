@@ -10,6 +10,7 @@ module.exports = {
     '^@react-native-firebase/app$': '<rootDir>/__mocks__/@react-native-firebase/app.js',
     '^@react-native-firebase/auth$': '<rootDir>/__mocks__/@react-native-firebase/auth.js',
     '^components/(.*)$': '<rootDir>/components/$1',
+    '^contexts/(.*)$': '<rootDir>/contexts/$1',
     '^app/(.*)$': '<rootDir>/app/$1',
   },
   setupFiles: ['./jest.setup.js'],
