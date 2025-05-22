@@ -18,10 +18,11 @@ export function SingleSelectChips({ options, value, onChange, disabled = false }
                         key={option}
                         onPress={() => !disabled && onChange(option)}
                         className={`
-          px-4 py-2 rounded-full border
-          ${selected ? "bg-accent" : "bg-mainGray"}
-          ${disabled ? "opacity-50" : ""}
-        `}
+                            px-4 py-2 rounded-full border
+                            ${selected ? "bg-accent" : "bg-mainGray"}
+                            ${disabled ? "opacity-50" : ""}
+                        `}
+                        testID={`chip-${option}${selected ? '-selected' : ''}`}
                     >
                         <Text className={`lightText`}>
                             {option}

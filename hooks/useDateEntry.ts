@@ -1,4 +1,3 @@
-// lib/hooks/useDateEntry.ts
 import { useEffect, useState } from "react";
 import { getFirestore, doc, getDoc } from "@react-native-firebase/firestore";
 import { useAuth } from "contexts/authContext";

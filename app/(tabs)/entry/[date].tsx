@@ -2,7 +2,7 @@ import DateEntryForm from "components/DateEntryForm";
 import { useLocalSearchParams } from "expo-router";
 import { DateEntryFormData } from "types/dateEntryFormData";
 import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
-import { Alert, View,Text, } from "react-native";
+import { Alert, View } from "react-native";
 import { useAuth } from "contexts/authContext";
 import { useDateEntry } from "hooks/useDateEntry";
 import Loading from "components/Loading";
@@ -10,6 +10,7 @@ import Loading from "components/Loading";
 export default function DateEntry() {
   const { date } = useLocalSearchParams();
   const { user } = useAuth();
+  // get data for date with custom hook useDateEntry
   const { data: initialValues, loading, error } = useDateEntry(date as string);
   const defaultData: DateEntryFormData = {
     flareup: "no",

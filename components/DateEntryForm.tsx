@@ -1,4 +1,4 @@
-import { Button, Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import Slider from '@react-native-community/slider';
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { DateEntryFormData } from "types/dateEntryFormData";
@@ -234,7 +234,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                     className="bg-mainGreen px-4 py-2 rounded mb-4 w-full"
                     onPress={handleSubmit(onSubmit)}
                 >
-                    <Text className="text-lightText dark:text-migraineSafeText text-center font-sans">Save Emtry</Text>
+                    <Text className="text-lightText dark:text-migraineSafeText text-center font-sans">Save Entry</Text>
                 </Pressable>
             </View>
         </ScrollView>
