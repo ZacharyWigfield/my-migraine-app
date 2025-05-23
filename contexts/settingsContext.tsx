@@ -25,7 +25,7 @@ type SettingsContextType = {
     setUserSettings: <Key extends keyof UserSettings>(key: Key, value: UserSettings[Key]) => void;
 };
 
-const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
+export const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [settings, setSettingsState] = useState<UserSettings>(defaultSettings)

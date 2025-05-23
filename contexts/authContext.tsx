@@ -8,7 +8,7 @@ type AuthContextType = {
 };
 
 // Fallback for if context is access outside of provider, which shouldn't happen
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
