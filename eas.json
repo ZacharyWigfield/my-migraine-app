@@ -5,7 +5,7 @@
   },
   "build": {
     "development": {
-      "environment": "development",
+      "environment": "development", //eas build --platform android --profile development
       "developmentClient": true,
       "distribution": "internal"
     },
