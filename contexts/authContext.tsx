@@ -1,4 +1,3 @@
-// lib/AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
 import { getAuth, FirebaseAuthTypes, onAuthStateChanged } from '@react-native-firebase/auth';
 
@@ -9,7 +8,7 @@ type AuthContextType = {
 };
 
 // Fallback for if context is access outside of provider, which shouldn't happen
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
