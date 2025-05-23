@@ -13,10 +13,10 @@ export default function TabsLayout() {
     }
   }, [user, loading]);
 
-  if (loading || user) {
-    return <Loading></Loading>
-  } else {
-    return <Stack />;
+  if (loading) {
+    return <Loading />;
   }
+
+  return <Stack />;
 
 }
