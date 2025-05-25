@@ -16,7 +16,7 @@ export default function PasswordInput({ value, onChange }: PasswordInputProps) {
                 placeholder="Password"
                 placeholderTextColor="#999"
                 secureTextEntry={isHidden}
-                className="border border-mainGray w-ful p-2 rounded text-lightText dark:text-migraineSafeText bg-lightSurface dark:bg-migraineSafeSurface"
+                className="border border-mainGray w-ful p-2 rounded text-lightText dark:text-darkText bg-lightSurface dark:bg-darkSurface"
                 onChangeText={onChange}
                 value={value}
             />

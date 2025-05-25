@@ -52,7 +52,7 @@ export default function DateEntry() {
   )
 
   return (
-    <View className="bg-lightBg dark:bg-migraineSafeBg">
+    <View className="bg-lightBg dark:bg-darkBg">
       <DateEntryForm
         date={date as string}
         initialValues={initialValues ? initialValues : defaultData}

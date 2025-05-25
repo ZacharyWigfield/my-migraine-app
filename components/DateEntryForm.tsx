@@ -43,12 +43,12 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
     }, [flareup, setValue]);
 
     return (
-        <ScrollView className="p-4 space-y-4 bg-lightBg dark:bg-migraineSafeBg">
-            <Text className="text-lg font-bold mb-2 text-lightText dark:text-migraineSafeText">
+        <ScrollView className="p-4 space-y-4 bg-lightBg dark:bg-darkBg">
+            <Text className="text-lg font-bold mb-2 text-lightText dark:text-darkText">
                 Entry for {date}
             </Text>
 
-            <Text className="text-lightText dark:text-migraineSafeText">Flare-up:</Text>
+            <Text className="text-lightText dark:text-darkText">Flare-up:</Text>
             <Controller
                 control={control}
                 name="flareup"
@@ -61,7 +61,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Severity:</Text>
+            <Text className="text-lightText dark:text-darkText">Severity:</Text>
             <Controller
                 control={control}
                 name="severity"
@@ -75,7 +75,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Diet:</Text>
+            <Text className="text-lightText dark:text-darkText">Diet:</Text>
             <Controller
                 control={control}
                 name="diet"
@@ -88,7 +88,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Exercise Intensity:</Text>
+            <Text className="text-lightText dark:text-darkText">Exercise Intensity:</Text>
             <Controller
                 control={control}
                 name="exerciseIntensity"
@@ -101,7 +101,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Exercise Hours: {exerciseHours ?? 0}</Text>
+            <Text className="text-lightText dark:text-darkText">Exercise Hours: {exerciseHours ?? 0}</Text>
             <Controller
                 control={control}
                 name="exerciseHours"
@@ -122,7 +122,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Screen Time: {screenTime ?? 0}</Text>
+            <Text className="text-lightText dark:text-darkText">Screen Time: {screenTime ?? 0}</Text>
             <Controller
                 control={control}
                 name="screentime"
@@ -143,7 +143,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Sleep: {sleep ?? 0}</Text>
+            <Text className="text-lightText dark:text-darkText">Sleep: {sleep ?? 0}</Text>
             <Controller
                 control={control}
                 name="sleep"
@@ -164,7 +164,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Weather:</Text>
+            <Text className="text-lightText dark:text-darkText">Weather:</Text>
             <Controller
                 control={control}
                 name="weather"
@@ -177,7 +177,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Stress Level:</Text>
+            <Text className="text-lightText dark:text-darkText">Stress Level:</Text>
             <Controller
                 control={control}
                 name="stressLevel"
@@ -190,7 +190,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Caffeine:</Text>
+            <Text className="text-lightText dark:text-darkText">Caffeine:</Text>
             <Controller
                 control={control}
                 name="caffeine"
@@ -203,7 +203,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Alcohol:</Text>
+            <Text className="text-lightText dark:text-darkText">Alcohol:</Text>
             <Controller
                 control={control}
                 name="alcohol"
@@ -216,7 +216,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                 )}
             />
 
-            <Text className="text-lightText dark:text-migraineSafeText">Tobacco:</Text>
+            <Text className="text-lightText dark:text-darkText">Tobacco:</Text>
             <Controller
                 control={control}
                 name="tobacco"
@@ -234,7 +234,7 @@ export default function DateEntryForm({ date, initialValues, onSubmit }: DateEnt
                     className="bg-mainGreen px-4 py-2 rounded mb-4 w-full"
                     onPress={handleSubmit(onSubmit)}
                 >
-                    <Text className="text-lightText dark:text-migraineSafeText text-center font-sans">Save Entry</Text>
+                    <Text className="text-lightText dark:text-darkText text-center font-sans">Save Entry</Text>
                 </Pressable>
             </View>
         </ScrollView>

@@ -21,13 +21,13 @@ export default function Register() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center px-4 bg-lightBg dark:bg-migraineSafeBg">
-      <Text className="text-2xl font-bold mb-4 text-lightText dark:text-migraineSafeText">Register</Text>
+    <View className="flex-1 justify-center items-center px-4 bg-lightBg dark:bg-darkBg">
+      <Text className="text-2xl font-bold mb-4 text-lightText dark:text-darkText">Register</Text>
 
       <TextInput
         placeholder="Email"
         placeholderTextColor="#999"
-        className="border border-mainGray w-full mb-2 p-2 rounded text-lightText dark:text-migraineSafeText bg-lightSurface dark:bg-migraineSafeSurface"
+        className="border border-mainGray w-full mb-2 p-2 rounded text-lightText dark:text-darkText bg-lightSurface dark:bg-darkSurface"
         onChangeText={setEmail}
         value={email}
       />

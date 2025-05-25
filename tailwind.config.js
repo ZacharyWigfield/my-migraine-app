@@ -16,9 +16,9 @@ module.exports = {
         accent2: "#2d6a4f",
 
         // Dark mode colors (migraineSafe)
-        migraineSafeBg: "#121212",
-        migraineSafeSurface: "#1E1E1E",
-        migraineSafeText: "#E0E0E0",
+        darkBg: "#121212",
+        darkSurface: "#1E1E1E",
+        darkText: "#E0E0E0",
 
         // Light mode colors
         lightBg: "#ffffff",
@@ -36,7 +36,7 @@ module.exports = {
         base: '1rem',     // 16px
         lg: '1.125rem',   // 18px
         xl: '1.25rem',    // 20px
-        '2xl': '1.5rem',  // 24px
+        xxl: '1.5rem',  // 24px
       },
       borderRadius: {
         sm: '6px',
