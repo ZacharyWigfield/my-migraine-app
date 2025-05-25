@@ -1,9 +1,9 @@
-// app/(auth)/register.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from '@react-native-firebase/auth';
 import { useRouter } from "expo-router";
 import { useAuth } from "contexts/authContext";
+import PasswordInput from "components/PasswordInput";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -32,21 +32,19 @@ export default function Register() {
         value={email}
       />
 
-      <TextInput
-        placeholder="Password"
-        placeholderTextColor="#999"
-        secureTextEntry
-        className="border border-mainGray w-full mb-4 p-2 rounded text-lightText dark:text-migraineSafeText bg-lightSurface dark:bg-migraineSafeSurface"
-        onChangeText={setPassword}
-        value={password}
-      />
+      <PasswordInput value={password} onChange={setPassword}></PasswordInput>
 
       <Pressable
-        className="bg-mainGreen px-4 py-2 rounded w-full"
+        className="bg-mainGreen px-4 py-2 rounded w-full mb-2"
         onPress={handleRegister}
       >
         <Text className="text-white text-center font-sans">Create Account</Text>
       </Pressable>
+
+      <Pressable onPress={() => router.replace('/login')} className="border border-mainGreen px-4 py-2 rounded w-full">
+        <Text className="text-mainGreen text-center font-sans">Back to Login</Text>
+      </Pressable>
+
     </View>
   );
 }

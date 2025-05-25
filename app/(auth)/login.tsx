@@ -1,9 +1,9 @@
-// app/(auth)/login.tsx
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from '@react-native-firebase/auth';
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useAuth } from "contexts/authContext";
+import PasswordInput from "components/PasswordInput";
 
 // landing page for a user who isn't signed in. Default page when a user is not authorized
 export default function Login() {
@@ -34,14 +34,8 @@ export default function Login() {
         onChangeText={setEmail}
         value={email}
       />
-      <TextInput
-        placeholder="Password"
-        placeholderTextColor="#999"
-        secureTextEntry
-        className="border border-mainGray w-full mb-4 p-2 rounded text-lightText dark:text-migraineSafeText bg-lightSurface dark:bg-migraineSafeSurface"
-        onChangeText={setPassword}
-        value={password}
-      />
+
+      <PasswordInput value={password} onChange={setPassword}></PasswordInput>
 
       <Pressable
         onPress={handleLogin}
@@ -50,11 +44,10 @@ export default function Login() {
         <Text className="text-white text-center font-sans">Login</Text>
       </Pressable>
 
-      <Link href="/register" asChild>
-        <Pressable className="border border-mainGreen px-4 py-2 rounded w-full">
-          <Text className="text-mainGreen text-center font-sans">Register</Text>
-        </Pressable>
-      </Link>
+      <Pressable onPress={() => router.replace('/register')} className="border border-mainGreen px-4 py-2 rounded w-full">
+        <Text className="text-mainGreen text-center font-sans">Register</Text>
+      </Pressable>
+
     </View>
   );
 }
