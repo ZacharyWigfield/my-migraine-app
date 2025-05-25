@@ -24,7 +24,7 @@ export default function TabsLayout() {
     <View className="flex-1">
       <View className="w-full h-16 bg-gray-900 flex-row items-center px-4">
         <TouchableOpacity onPress={() => setIsOpen(true)}>
-          <Text className="text-lightText dark:text-darkText text-xxl">☰</Text>
+          <Text className="text-lightText dark:text-darkText text-xxxl">☰</Text>
         </TouchableOpacity>
       </View>
 

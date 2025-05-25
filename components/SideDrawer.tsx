@@ -51,20 +51,20 @@ export default function SideDrawer({ isOpen, closeDrawer }: PasswordInputProps) 
 
             <Animated.View
                 style={[animatedStyle, { width: DRAWER_WIDTH }]}
-                className="absolute top-0 left-0 bottom-0 bg-white z-20 px-6 pt-28 shadow-lg"
+                className="absolute top-0 left-0 bottom-0 bg-lightBg dark:bg-darkSurface z-20 px-6 pt-28 shadow-lg"
             >
-                <Text className="text-xl font-bold mb-6">Menu</Text>
+                <Text className="text-xl text-lightText dark:text-darkText font-bold mb-6">Menu</Text>
 
                 <TouchableOpacity onPress={() => navigate('/')} className="mb-4">
-                    <Text className="text-lg">Home</Text>
+                    <Text className="text-lg text-lightText dark:text-darkText">Home</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => navigate('/settings')} className="mb-4">
-                    <Text className="text-lg">Settings</Text>
+                    <Text className="text-lg text-lightText dark:text-darkText">Settings</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={handleLogout} className="mb-4">
-                    <Text className="text-lg">Logout</Text>
+                    <Text className="text-lg text-lightText dark:text-darkText">Logout</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={closeDrawer}>
