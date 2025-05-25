@@ -19,7 +19,6 @@
     "@react-native-firebase/app": "^22.1.0",
     "@react-native-firebase/auth": "^22.1.0",
     "@react-native-firebase/firestore": "^22.1.0",
-    "@react-navigation/drawer": "^7.3.12",
     "expo": "^53.0.7",
     "expo-checkbox": "~4.1.4",
     "expo-dev-client": "~5.1.8",
